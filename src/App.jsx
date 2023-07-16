@@ -1,13 +1,14 @@
-
 //components
 import Landing from "./Components/Landing";
 import Navbar from "./Components/Navbar";
+import QuizDataProvider from "./Contexts/QuizDataProvider";
 function App() {
-  
   return (
     <>
-      <Navbar />
-      <Landing />
+      <QuizDataProvider>
+        <Navbar />
+        <Landing />
+      </QuizDataProvider>
     </>
   );
 }
