@@ -1,5 +1,26 @@
-function Question({ loading, data }) {
-  return <>{loading ? <h3>Loading ...</h3> : <div> {data[0].question}</div>}</>;
+function Question({ question, questionIndex, setQuestionIndex, answers }) {
+  const submitAns = (event) => {
+    event.preventDefault();
+    setQuestionIndex(questionIndex + 1);
+  };
+  console.log(answers);
+  return (
+    <>
+      <form>
+        <span>{questionIndex + 1}</span>
+        <h2>{question}</h2>
+        {answers.map((answer) => (
+          <label key={answer}>
+            <input type="radio" name="answer" value={answer} />
+            {answer}
+          </label>
+        ))}
+        <button type="submit" onClick={submitAns}>
+          submit
+        </button>
+      </form>
+    </>
+  );
 }
 
 export default Question;
