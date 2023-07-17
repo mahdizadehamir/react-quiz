@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useEffect, useState } from "react";
 import { fetchApi } from "../Services/Api";
-
+import { Navigate } from "react-router-dom";
 export const QuizContext = createContext();
 function QuizDataProvider({ children }) {
   const [data, setData] = useState([]);
@@ -15,11 +15,12 @@ function QuizDataProvider({ children }) {
     };
     fetchData();
   }, []);
+
   return (
     <QuizContext.Provider
       value={{ data, loading, questionIndex, setQuestionIndex }}
     >
-      { children}
+      {questionIndex < 9 ? children : <Navigate to="/result" />}
     </QuizContext.Provider>
   );
 }

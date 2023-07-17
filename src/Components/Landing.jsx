@@ -4,6 +4,8 @@ import { useContext } from "react";
 import Question from "./Shared/Question";
 //Context
 import { QuizContext } from "../Contexts/QuizDataProvider";
+//helpers
+import { randomMaker } from "../helper/functions";
 function Landing() {
   const { data, loading, questionIndex, setQuestionIndex } =
     useContext(QuizContext);
@@ -19,7 +21,10 @@ function Landing() {
             loading={loading}
             questionIndex={questionIndex}
             setQuestionIndex={setQuestionIndex}
-            answers={[data[questionIndex].correct_answer, ...data[questionIndex].incorrect_answers]}
+            answers={randomMaker([
+              data[questionIndex].correct_answer,
+              ...data[questionIndex].incorrect_answers,
+            ])}
           />
         )
       ) : (

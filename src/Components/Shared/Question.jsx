@@ -1,7 +1,7 @@
 function Question({ question, questionIndex, setQuestionIndex, answers }) {
   const submitAns = (event) => {
     event.preventDefault();
-    setQuestionIndex(questionIndex + 1);
+    setQuestionIndex((prevState) => prevState + 1);
   };
   console.log(answers);
   return (
